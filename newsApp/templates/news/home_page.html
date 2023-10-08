@@ -13,7 +13,7 @@
     <div class="main-pagecontainer">
         <form method="get">
             <div class="search-bar">
-                <input name="search" type="text">
+                <input name="search" type="text" value="{{request.GET.search}}" placeholder="Enter Keywords (e.g., Technology, Sports)...">
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -21,10 +21,10 @@
         </form>
         {% if request.GET.search %}
         <div class="filter-section">
-            <div>Search for: {{request.GET.search}}</div>
+            <div><b>Search for: "{{request.GET.search}}"</b></div>
             <div class="news-sort-and-filter">
-                <div></div>
-                <div></div>
+                <button>Sort</button>
+                <button>Filter <i class="fa-solid fa-filter"></i></button>
             </div>
         </div>
         <div class="news-grid">

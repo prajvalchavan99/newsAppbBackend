@@ -21,7 +21,7 @@ def SearchNews(request, keyword):
 def HomePage(request):
     context={}
     searchQuery = request.GET.get('search')
-    url =  settings.BASE_API_URL + "everything" if searchQuery else settings.BASE_API_URL + "top-headlines"
+    url =  settings.BASE_API_URL + "everything" if searchQuery else settings.BASE_API_URL + "top-headlines?country=in"
     params = {
         'apiKey': settings.NEWS_API_KEY
     }
