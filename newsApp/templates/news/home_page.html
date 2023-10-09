@@ -23,12 +23,12 @@
         <div class="filter-section">
             <div><b>Search for: "{{request.GET.search}}"</b></div>
             <div class="news-sort-and-filter">
-                <button>Sort</button>
+                <a href="?search={{request.GET.search}}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate">Sort <img src="{% static 'sort.svg' %}" alt="" width="15px"></a>
                 <button>Filter <i class="fa-solid fa-filter"></i></button>
             </div>
         </div>
         <div class="news-grid">
-            {% for article in newsData.articles %}
+            {% for article in newsData %}
             <div class="news-article" onclick="window.open('{{article.url}}','_blank')">
                 <img src="{{article.urlToImage}}" alt="" width="100%">
                 <h2>{{ article.title }}</h2>
