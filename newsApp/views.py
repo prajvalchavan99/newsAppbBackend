@@ -22,22 +22,30 @@ def HomePage(request):
     context={}
     searchQuery = request.GET.get('search')
     sortingOrder = request.GET.get('order')
-    url =  settings.BASE_API_URL + "everything" if searchQuery else settings.BASE_API_URL + "top-headlines?country=in"
+    url =  settings.BASE_API_URL + "top-headlines?country=us"
     params = {
         'apiKey': settings.NEWS_API_KEY
     }
 
-    if searchQuery:
-        params['q'] = searchQuery
-
     response = requests.get(url, params=params)
     if response.status_code == 200:
         data = response.json()
-        sortingOrder = True if  sortingOrder and '-' in sortingOrder else False
-        requiredData = sorted(data['articles'], key=lambda x: x['publishedAt'], reverse=sortingOrder)
     else:
         return JsonResponse({'error': response.text()}, status=500)
-    # print(data)
-    context['newsData'] = requiredData
+    context['newsData'] = data['articles']
     return render(request,'news/home_page.html',context)
 
+
+def SearchNews(request):
+    context={}
+    searchQuery = request.GET.get('search')
+    url =  settings.BASE_API_URL + "everything"
+    params = {
+        'apiKey': settings.NEWS_API_KEY,
+        'q': searchQuery,
+        'page': 1
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+    context['newsData'] = sorted(data['articles'], key=lambda x: x['publishedAt'], reverse=True)[:12]
+    return render(request,'news/search_news.html',context)

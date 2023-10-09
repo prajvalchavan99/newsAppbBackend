@@ -1,0 +1,33 @@
+{% include 'navigation/header.html' %}
+{% load static %}
+<br>
+<div class="main-pagecontainer">
+    <form method="get">
+        <div class="search-bar">
+            <input name="search" type="text" value="{{request.GET.search}}" placeholder="Enter Keywords (e.g., Technology, Sports)...">
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </form>
+    <div class="filter-section">
+        <div><b>Search for: "{{request.GET.search}}"</b></div>
+        <div class="news-sort-and-filter">
+            <a href="?search={{request.GET.search}}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate">Sort <img src="{% static 'sort.svg' %}" alt="" width="15px"></a>
+            <button>Filter <i class="fa-solid fa-filter"></i></button>
+        </div>
+    </div>
+    <div class="news-grid">
+        {% for article in newsData %}
+        <div class="news-article" onclick="window.open('{{article.url}}','_blank')">
+            <img src="{{article.urlToImage}}" alt="" width="100%">
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'navigation/footer.html' %}
+<script>
+    loadResultsToLocalStorage(JSON.parse('{{newsData|safe}}'))
+</script>
