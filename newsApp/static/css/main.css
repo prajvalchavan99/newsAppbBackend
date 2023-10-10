@@ -11,12 +11,13 @@ body{
 .navigation{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .navigation .app-logo{
     font-size: 27px;
     font-weight: bold;
 }
-.navigation .navbar-links a{
+.navigation .navbar-links a, .navbar-profile a{
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -24,8 +25,14 @@ body{
     transition: 0.3s;
 }
 
+.navigation .navbar-links a.active{
+    background-color: white;
+    color: black;
+}
+
 .navigation .navbar-links a:hover{
     background-color: rgb(35, 35, 35);
+    color: white;
 }
 
 
@@ -192,4 +199,12 @@ body{
     font-weight: bold;
     font-size: 17px;
     text-decoration: none;
+}
+
+.category-container a{
+    text-decoration: none;
+    color: black;
+    border: 1px solid;
+    padding: 5px;
+    margin: 5px;
 }

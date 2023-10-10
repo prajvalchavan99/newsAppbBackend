@@ -10,22 +10,42 @@
             </button>
         </div>
     </form>
+    {% if noDataForSearch %}
+    {{noDataForSearch}}
+    {% else %}
+    {% if newsData %}
     <div class="filter-section">
         <div><b>Search for: "{{request.GET.search}}"</b></div>
+        <div class="category-container">
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Business">Business</a>
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Entertainment">Entertainment</a>
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Health">Health</a>
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Science">Science</a>
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Sports">Sports</a>
+            <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Technology">Technology</a>
+        </div>
         <div class="news-sort-and-filter">
-            <a href="?search={{request.GET.search}}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate">Sort <img src="{% static 'sort.svg' %}" alt="" width="15px"></a>
+            <a href="?search={{request.GET.search}}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% if request.GET.category %}&category={{category}}{% endif %}">Sort <img src="{% static 'sort.svg' %}" alt="" width="15px"></a>
             <button>Filter <i class="fa-solid fa-filter"></i></button>
         </div>
     </div>
     <div class="news-grid">
         {% for article in newsData %}
         <div class="news-article" onclick="window.open('{{article.url}}','_blank')">
+            {% if article.urlToImage %}
             <img src="{{article.urlToImage}}" alt="" width="100%">
+            {% endif %}
             <h2>{{ article.title }}</h2>
+            {% if article.description %}
             <p>{{ article.description }}</p>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
+    {% else %}
+    <p style="width: 100%;text-align: center;">Please enter your term in searchbox.</p>
+    {% endif %}
+    {% endif %}
 </div>
 {% include 'navigation/footer.html' %}
 <script>

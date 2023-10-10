@@ -1,0 +1,28 @@
+{% include 'navigation/header.html' %}
+{% load static %}
+<br>
+<div class="main-pagecontainer">
+    <h1>My searches</h1>
+    {% for key, value in userSearches.items %}
+    {% if value %}
+    <h3>{{key}}</h3>
+    <div class="news-grid">
+            {% for article in value %}
+            <div class="news-article" onclick="window.open('{{article.url}}','_blank')">
+                {% if article.urlToImage %}
+                <img src="{{article.urlToImage}}" alt="" width="100%">
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                {% if article.description %}
+                <p>{{ article.description }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% include 'navigation/footer.html' %}
+<script>
+    loadResultsToLocalStorage(JSON.parse('{{newsData|safe}}'))
+</script>

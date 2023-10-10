@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    {% include 'navigation/header.html' %}
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form method="post">
+                <input type="text" placeholder="Username" name="username" required><br>
+                <input type="password" placeholder="Password" name="password" required><br>
+                <button type="submit">Login</button>
+            </form>
+            <p>New to News App? <a href="/register" class="login-link">Sign up</a></p>
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <p class="app-messages error">{{message}}</p>
+                {% else %}
+                    <p class="app-messages success">{{message}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

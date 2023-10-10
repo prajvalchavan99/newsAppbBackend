@@ -1,15 +1,25 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <nav class="news-app-nav">
     <div class="navigation">
         <div class="app-logo">News App</div>
         <div class="navbar-links">
-            <a href="">Home</a>
-            <a href="">Search News</a>
-            <a href="">My Searches</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
+                <a href="{% url 'searchresults' %}" {% if request.path == '/search-news/' %}class="active"{% endif %}>Search News</a>
+                <a href="{% url 'usersearches' %}" {% if request.path == '/my-searches/' %}class="active"{% endif %}>My Searches</a>
+            {% endif %}
         </div>
-        <div class="navbar-profile"></div>
+        <div class="navbar-profile">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}">logout</a>
+            {% else %}
+                <a href="/login">Login</a> / 
+                <a href="/register">Register</a>
+            {% endif %}
+        </div>
     </div>
 </nav>

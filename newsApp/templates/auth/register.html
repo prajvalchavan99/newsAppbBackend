@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+
+<body>
+    {% include 'navigation/header.html' %}
+    <div class="register-container">
+        <div class="register-form">
+            <h2>Registration</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username" required><br>
+                <input type="password" placeholder="Password" name="password" required><br>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="/login" class="login-link">Log in</a></p>
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <p class="app-messages error">{{message}}</p>
+                {% else %}
+                    <p class="app-messages success">{{message}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

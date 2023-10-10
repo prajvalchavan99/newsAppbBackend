@@ -9,3 +9,7 @@ newsApp/__pycache__/models.cpython-38.pyc
 newsApp/__pycache__/apps.cpython-38.pyc
 newsApp/__pycache__/admin.cpython-38.pyc
 newsApp/__pycache__/__init__.cpython-38.pyc
+newsApp/views.py
+newsApp/migrations/__pycache__/0001_initial.cpython-38.pyc
+newsApp/migrations/__pycache__/0001_initial.cpython-38.pyc
+newsApp/migrations/0001_initial.py
