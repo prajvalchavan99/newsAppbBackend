@@ -31,5 +31,17 @@ Working on this project was a rewarding experience. It provided an opportunity t
 2. integrating APi with proper conditions and filters
 
 ## Screenshots
+1. Home page
+![Home Page](https://github.com/prajvalchavan99/newsAppbBackend/blob/main/screenshots/home.png)
 
-![Login Screenshot](i)
+2.Login Page
+![Login](https://github.com/prajvalchavan99/newsAppbBackend/blob/main/screenshots/login.png)
+
+3.Register Page
+![Register](https://github.com/prajvalchavan99/newsAppbBackend/blob/main/screenshots/register.png)
+
+4. Search News
+![Search News](https://github.com/prajvalchavan99/newsAppbBackend/blob/main/screenshots/search-news.png)
+
+5. My Searches
+![My Searches](https://github.com/prajvalchavan99/newsAppbBackend/blob/main/screenshots/my-searches.png)
