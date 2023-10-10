@@ -183,7 +183,6 @@ def CacheSearchResults(keyword, user, search_result):
     Returns:
         None
     """
-    print(keyword)
     cache_key = f"search_results:{keyword}"
     cache.set(cache_key, search_result,timeout=3600)
     CacheSearchResult.objects.create(keyword=keyword,user=user,search_result=search_result)
