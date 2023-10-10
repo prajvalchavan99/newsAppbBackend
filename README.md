@@ -29,3 +29,7 @@ Working on this project was a rewarding experience. It provided an opportunity t
 ## Challenges Faced
 1. Storing fetched data in cache to avoid refetching of data with api
 2. integrating APi with proper conditions and filters
+
+## Screenshots
+
+![Login Screenshot](i)

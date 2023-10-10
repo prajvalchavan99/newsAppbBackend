@@ -25,10 +25,11 @@
             <a href="?search={{request.GET.search}}{% if request.GET.order %}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% endif %}&category=Technology">Technology</a>
         </div>
         <div class="news-sort-and-filter">
+            <a href="">Refresh <i class="fa-solid fa-rotate-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="?search={{request.GET.search}}&order={% if '-' in request.GET.order %}{% else %}-{% endif %}publishdate{% if request.GET.category %}&category={{category}}{% endif %}">Sort <img src="{% static 'sort.svg' %}" alt="" width="15px"></a>
-            <button>Filter <i class="fa-solid fa-filter"></i></button>
         </div>
     </div>
+    <br>
     <div class="news-grid">
         {% for article in newsData %}
         <div class="news-article" onclick="window.open('{{article.url}}','_blank')">
